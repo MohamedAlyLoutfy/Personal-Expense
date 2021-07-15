@@ -18,7 +18,7 @@ class Chart extends StatelessWidget {
 
 
     return List.generate(7, (index) {
-      
+
       final weekDay = DateTime.now().subtract(
         Duration(days: index),
       );
@@ -36,7 +36,7 @@ class Chart extends StatelessWidget {
         'day': DateFormat.E().format(weekDay).substring(0, 1),
         'amount': totalSum,
       };
-    });
+    }).reversed.toList();
   }
 
   double get totalSpending {
