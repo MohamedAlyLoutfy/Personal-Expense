@@ -198,7 +198,7 @@ List<Transaction> get _recentTransactions{
             child: TransactionList(
               _userTransactions, _deleteTransaction)
               );
-            final pageBody =SingleChildScrollView(
+            final pageBody = SafeArea(child: SingleChildScrollView(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -244,6 +244,7 @@ List<Transaction> get _recentTransactions{
          
           ],
         ),
+      ),
       );
       SingleChildScrollView(
         child: Column(
