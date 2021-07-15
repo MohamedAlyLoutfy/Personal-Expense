@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
         primarySwatch: Colors.purple,
@@ -206,9 +206,13 @@ List<Transaction> get _recentTransactions{
             if(isLandscape) Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Show Chart'),
+                Text('Show Chart',
+                style: Theme.of(context).textTheme.title,
+                
+                ),
                 Switch.adaptive
-                (value: _showChart, 
+                (activeColor: Theme.of(context).accentColor,
+                  value: _showChart, 
                 onChanged: (val){
                   setState(() {
                     _showChart=val;
