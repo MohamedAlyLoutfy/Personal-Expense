@@ -20,29 +20,19 @@ class TransactionList  extends StatelessWidget {
        children:<Widget> [
         Text('No transactions added yet',
         style: Theme.of(context).textTheme.title,
-        
-        
-        
         ),
-
         SizedBox(height: 20,),
         Container(
           height: constraints.maxHeight*0.6,
           child: Image.asset(
             'assets/image/waiting.png',fit: BoxFit.cover,)
             ),
-      
-
-
-
       ],
       ) ;
-
-
-
     })
      
   
+
       : ListView.builder(
         itemBuilder: (ctx,index){
             return Card(
@@ -76,17 +66,11 @@ class TransactionList  extends StatelessWidget {
                     icon: Icon(Icons.delete),
                   color: Theme.of(context).errorColor,
                   onPressed:()=>deleteTx(transactions[index].id) ,
-                  
-                  ),
-            
-            
+                 ),
               ),
             );
-
-
         },
         itemCount: transactions.length,
-        
     );
   }
 }

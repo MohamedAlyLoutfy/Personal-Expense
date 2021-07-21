@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'dart:js';
+//import 'dart:js';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,9 +19,6 @@ void main() {
    }
 
 class MyApp extends StatelessWidget {
-
-
-
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
@@ -35,12 +32,8 @@ class MyApp extends StatelessWidget {
           title: TextStyle(fontFamily: 'OpenSans',
           fontWeight: FontWeight.bold,
           fontSize: 18,
-          
-          
           ),
           button: TextStyle(color: Colors.white),
-
-
         ) ,
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
@@ -48,31 +41,25 @@ class MyApp extends StatelessWidget {
               fontFamily: 'OpenSans',
               fontSize: 20,
               fontWeight: FontWeight.bold,
-
-
             ),
           ),
-        
-        ),
-
-      
+        ),      
       ),
       home: MyHomePage(),
     );
   }
-
-
-
 }
+
+
+
+
+
 
 class MyHomePage extends StatefulWidget {
   // String titleInput;
   // String amountInput;
   @override
   _MyHomePageState createState() => _MyHomePageState();
-
-
-
 
 }
 
@@ -91,41 +78,32 @@ class _MyHomePageState extends State<MyHomePage> {
       //date: DateTime.now(),
     //),
   ];
-  bool _showChart  =false;
-
-
+bool _showChart  =false;
 
 List<Transaction> get _recentTransactions{
   return _userTransactions.where((tx){
-
-
     return tx.date.isAfter(
       DateTime.now().subtract(
-
         Duration(days:7)
       ),
-
-
-
     );
   } ).toList();
 }
 
 
-  void _addNewTransaction(String txTitle, double txAmount,DateTime chosenDate) {
+void _addNewTransaction(String txTitle, double txAmount,DateTime chosenDate) {
     final newTx = Transaction(
       title: txTitle,
       amount: txAmount,
       date: chosenDate,
       id: DateTime.now().toString(),
     );
-
     setState(() {
       _userTransactions.add(newTx);
     });
-  }
+}
 
-  void _startAddNewTransaction(BuildContext ctx) {
+void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
       context: ctx,
       builder: (_) {
@@ -136,12 +114,12 @@ List<Transaction> get _recentTransactions{
         );
       },
     );
-  }
-  void _deleteTransaction(String id){
+}
+
+
+void _deleteTransaction(String id){
     setState(() {
       _userTransactions.removeWhere((tx){
-        
-        
         return tx.id==id;
       });
     });
@@ -152,8 +130,6 @@ List<Transaction> get _recentTransactions{
 
   @override
   Widget build(BuildContext context) {
-
-
     final mediaQuery=MediaQuery.of(context);
     final isLandscape =mediaQuery.orientation==Orientation.landscape;
     final PreferredSizeWidget appBar =Platform.isIOS
@@ -166,9 +142,7 @@ List<Transaction> get _recentTransactions{
         children:<Widget> [
         GestureDetector(
           child: Icon(CupertinoIcons.add),
-          
           onTap:()=>_startAddNewTransaction(context),
-
          )
 
 
