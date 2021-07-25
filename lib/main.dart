@@ -184,17 +184,12 @@ void _deleteTransaction(String id){
             child: Chart(_recentTransactions),
             ),
             txListWidget];
-            
-
-
+          
 
    }
-  @override
-  Widget build(BuildContext context) {
-    final mediaQuery=MediaQuery.of(context);
-    final isLandscape =mediaQuery.orientation==Orientation.landscape;
-    final PreferredSizeWidget appBar =Platform.isIOS
-    ?CupertinoNavigationBar(
+
+   Widget _iscaprtino() {
+     return CupertinoNavigationBar(
       middle:Text('Personal Expenses',
       ) ,
       trailing: Row(
@@ -210,10 +205,12 @@ void _deleteTransaction(String id){
 
       ],
       ),
-    ) 
-    
-    
-    : AppBar(
+    );
+
+
+   }
+   Widget _isnotcaprtino(){
+     return AppBar(
         title: Text(
           'Personal Expenses'
           ),
@@ -224,6 +221,18 @@ void _deleteTransaction(String id){
           ),
         ],
       );
+
+
+   }
+  @override
+  Widget build(BuildContext context) {
+    final mediaQuery=MediaQuery.of(context);
+    final isLandscape =mediaQuery.orientation==Orientation.landscape;
+    final PreferredSizeWidget appBar =Platform.isIOS
+    ? _iscaprtino()
+    
+    
+    : _isnotcaprtino();
     final txListWidget= Container(
             height:(mediaQuery.size.height -
             appBar.preferredSize.height-
